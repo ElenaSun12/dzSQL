@@ -6,8 +6,6 @@ import ru.netology.banklogin.data.DataHelper;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static java.awt.SystemColor.info;
-import static sun.security.jgss.GSSUtil.login;
 
 public class LoginPage {
     private final SelenideElement loginField = $("[data-test-id=login] input");
