@@ -27,23 +27,24 @@ public class BankLoginTest {
     @DisplayName("Should successfully login to dashboard with exist login and password from sut test data")
     void shouldSuccesfulLogin() {
         var verificationPage = loginPage.validLogin(authInfo);
-        var verificationCode = SQLHelper.getVrificationCode();
-    verificationPage.validVerify(verificationCode.getCode());
+        var verificationCode = SQLHelper.getVerificationCode();
+        verificationPage.validVerify(verificationCode.getCode());
     }
 
     @Test
     @DisplayName("Should get error notification if user is not exist in base")
-    void shouldGetErrorNotificationIfLoginWithoutAddingToBase() {
+    void shouldGetErrorNotificationIfLoginWithRandomUserWithoutAddingToBase() {
         var authInfo = DataHelper.generateRandomUser();
         loginPage.login(authInfo);
         loginPage.verifyErrorNotification("Ошибка! Неверно указан логин или пароль");
     }
+
     @Test
     @DisplayName("Should get error notification if login with exist in base and active user and random verification code")
     void shouldGetErrorNotificationIfLoginWithExistUserAndRandomVerificationCode() {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.generateRandomVerificationCode();
         verificationPage.verify(verificationCode.getCode());
-        verificationPage.verifyErrorNotification("Ошибка! Неверно указан логин или пароль");
+        verificationPage.verifyErrorNotification("Ошибка! Неверно указан код! Попробуйте ещё раз.");
     }
 }
