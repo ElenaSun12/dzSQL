@@ -36,7 +36,7 @@ public class BankLoginTest {
     void shouldGetErrorNotificationIfLoginWithRandomUserWithoutAddingToBase() {
         var authInfo = DataHelper.generateRandomUser();
         loginPage.login(authInfo);
-        loginPage.verifyErrorNotification("Ошибка! Неверно указан логин или пароль");
+        loginPage.verifyErrorNotification("Ошибка! Неверно указан логин или пароль" );
     }
 
     @Test
